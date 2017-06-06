@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^user/$', views.UserList.as_view()),
     url(r'^user/(?P<pk>[0-9]+)$', views.UserDetail.as_view()),
     url(r'^commentForIssue/(?P<pk>[0-9]+)$', views.CommentForIssueList.as_view()),
+    url(r'^register/$', views.UserRegister.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

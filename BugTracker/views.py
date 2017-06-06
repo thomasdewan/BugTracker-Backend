@@ -56,3 +56,10 @@ class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAuthenticated,)
+    
+class UserRegister(generics.CreateAPIView):
+    model = User
+    permission_classes = [
+        permissions.AllowAny # Or anon users can't register
+    ]
+    serializer_class = UserSerializer
