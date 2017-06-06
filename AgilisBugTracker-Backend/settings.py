@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'AgilisBugTracker.urls'
+ROOT_URLCONF = 'AgilisBugTracker-Backend.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'AgilisBugTracker.wsgi.application'
+WSGI_APPLICATION = 'AgilisBugTracker-Backend.wsgi.application'
 
 REST_FRAMEWORK = {
     'PAGE_SIZE': 10
