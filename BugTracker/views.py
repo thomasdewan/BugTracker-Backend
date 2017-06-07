@@ -9,7 +9,7 @@ from .permissions import IsOwnerOrReadOnly,ReadOnly
 class IssueList(generics.ListCreateAPIView):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -17,12 +17,12 @@ class IssueList(generics.ListCreateAPIView):
 class IssueDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -30,11 +30,11 @@ class CommentList(generics.ListCreateAPIView):
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
     
 class CommentForIssueList(APIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,ReadOnly)
+    permission_classes = (permissions.IsAuthenticated,ReadOnly)
 
     def get(self, request, pk):
         queryset = Comment.objects.filter(issue=pk)
