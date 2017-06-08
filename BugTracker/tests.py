@@ -18,7 +18,7 @@ class IssueTestCase(TestCase):
 
     def testIssue(self):
         issue = Issue.objects.get(name="testName")
-        self.assertEqual(str(issue), "testName by user1")
+        self.assertEqual(str(issue), "testName")
         
 class CommentTestCase(TestCase):
     def setUp(self):

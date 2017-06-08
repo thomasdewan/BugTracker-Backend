@@ -20,4 +20,5 @@ class ReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         else:
+            # Write permissions
             return False

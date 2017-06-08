@@ -19,6 +19,9 @@ class IssueDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = IssueSerializer
     permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
+    def perform_update(self, serializer):
+        generics.RetrieveUpdateDestroyAPIView.perform_update(self, serializer)
+    
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer

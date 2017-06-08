@@ -18,7 +18,7 @@ class Issue(models.Model):
     state = models.ForeignKey('State')
 
     def __str__(self):
-        return self.name+" by "+ self.owner.username
+        return self.name
 
 class State(models.Model):
     name = models.CharField(max_length=20)
