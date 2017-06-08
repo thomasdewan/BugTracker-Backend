@@ -7,7 +7,7 @@ from rest_framework import generics, permissions
 from .permissions import IsOwnerOrReadOnly,ReadOnly
 
 class IssueList(generics.ListCreateAPIView):
-    queryset = Issue.objects.all().order_by('creationDate')
+    queryset = Issue.objects.all().order_by('-creationDate')
     serializer_class = IssueSerializer
     permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
