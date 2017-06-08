@@ -14,7 +14,7 @@ class Issue(models.Model):
     owner = models.ForeignKey(User, related_name='issue', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=False)
     description = models.TextField(blank=False)
-    creationDate = models.DateField(auto_now_add=True, blank=False)
+    creationDate = models.DateTimeField(auto_now_add=True, blank=False)
     state = models.ForeignKey('State')
 
     def __str__(self):
