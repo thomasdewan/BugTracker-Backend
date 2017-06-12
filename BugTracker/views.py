@@ -24,6 +24,7 @@ class IssueDetail(generics.RetrieveUpdateDestroyAPIView):
             closedStateId = State.objects.get(name='Closed').id
             if request.data['state'] == str(closedStateId):
                 print("Send Emails To EveryBody")
+                print("Modify in Backend/views/IssueDetail/patch")
         return self.partial_update(request, *args, **kwargs)
     
 class CommentList(generics.ListCreateAPIView):
