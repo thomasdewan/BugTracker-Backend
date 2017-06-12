@@ -20,8 +20,8 @@ class IssueDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
     def patch(self, request, *args, **kwargs):
-        closedStateId = State.objects.get(name='Closed').id
         if 'state' in request.data:
+            closedStateId = State.objects.get(name='Closed').id
             if request.data['state'] == str(closedStateId):
                 print("Send Emails To EveryBody")
         return self.partial_update(request, *args, **kwargs)
