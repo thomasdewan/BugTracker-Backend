@@ -19,8 +19,12 @@ class IssueDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = IssueSerializer
     permission_classes = (permissions.IsAuthenticated,IsOwnerOrReadOnly,)
     
-    def perform_update(self, serializer):
-        generics.RetrieveUpdateDestroyAPIView.perform_update(self, serializer)
+    def patch(self, request, *args, **kwargs):
+        closedStateId = State.objects.get(name='Closed').id
+        if 'state' in request.data:
+            if request.data['state'] == str(closedStateId):
+                print("Send Emails To EveryBody")
+        return self.partial_update(request, *args, **kwargs)
     
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
